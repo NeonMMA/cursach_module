@@ -10,7 +10,6 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <App />
-      <PageRouter/>
     </React.StrictMode>
   </BrowserRouter>
   

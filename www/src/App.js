@@ -1,11 +1,12 @@
 import './App.css';
+import Leftpanel from './leftpanel';
+import PageRouter from './pageRouter';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>SALAM</h1>
-      </header>
+      <Leftpanel/>
+      <PageRouter/>
     </div>
   );
 }

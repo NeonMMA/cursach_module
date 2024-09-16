@@ -8,10 +8,10 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    localStorage.clear();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("after click");
         try {
             axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
             axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
