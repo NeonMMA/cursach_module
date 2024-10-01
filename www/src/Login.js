@@ -18,6 +18,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/login', { username, password });
             localStorage.setItem('accessToken', response.data.access_token);
             localStorage.setItem('refreshToken', response.data.refresh_token);
+            console.clear();
             console.log("response:");
             console.log(response);
             navigate('/');

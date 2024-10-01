@@ -8,6 +8,7 @@ import {
 import Login from "./Login";
 import Upload from './Upload';
 import Lessons from './Lessons';
+
 // import AdminPage from "../pages/admin/AdminPage"
 // import UserPage from "../pages/user/UserPage"
 
@@ -23,7 +24,7 @@ function PageRouter(path="/") {
         
         if (localStorage.getItem("accessToken")) {
             console.log("done");
-            navigate("path");
+            navigate(path);
         }
         else {
             console.log("no tokens");
@@ -34,6 +35,7 @@ function PageRouter(path="/") {
 
     return (
         // <Router>
+            
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 {/* <Route exact path="/adminPage" element={<AdminPage />} /> */}
