@@ -24,8 +24,8 @@ const Login = () => {
             navigate('/');
         } catch (error) {
             console.error('Login failed', error);
-            const err = ReactDOM.createRoot(document.getElementById('err'));
-            err.render(<span color='red'>Login failed</span>);
+            const errortag = ReactDOM.createRoot(document.getElementById('err'));
+            errortag.render(<span color='red'>Login failed</span>);
         }
     };
 
@@ -56,7 +56,7 @@ const Login = () => {
                     <a href="/forgot-password" className="forgot-password">Forgot password?</a>
                 </div>
                 <button type="submit" className="login-button">Sign in</button>
-                <err id="err"/>
+                <span id="err"/>
                 <div className="divider"></div>
             </form>
         </div>

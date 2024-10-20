@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {localStorage.getItem("accessToken") != null ? <Leftpanel/> : <h1>well cum</h1>}
+      { (localStorage.getItem("accessToken") != null) && <Leftpanel/>}
       <PageRouter/>
     </div>
   );

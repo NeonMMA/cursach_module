@@ -4,14 +4,19 @@ import './font-awesome/css/font-awesome.css';
 import {React, useEffect, useState} from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
+
 
 function Leftpanel() {
     const navigate = useNavigate();
     const [tok, setTok] = useState(localStorage.getItem("accessToken") != null);
-    
+    const [role, setRole] = useState("");
+
     const updateToken = () => {
         const token = localStorage.getItem("accessToken");
         setTok(token != null);
+        if (token != null || token === "") setRole(jwtDecode(token).sub.role);
+        else setRole("");
     };
 
     useEffect(() => {
@@ -39,92 +44,97 @@ function Leftpanel() {
         navigate("/login");
     };
 
+
   return (
-            <nav class="main-menu" id="fix">
+            <nav className="main-menu" id="fix">
                 <ul>
                     <li>
                         <Link to={tok ? "/" : "/login"}>
-                            <i class="fa fa-home fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-home fa-lg"></i>
+                            <span className="nav-text">
                                 name
                                 </span>
                         </Link>
                     </li>
-                    <li class="has-subnav">
-                        <Link to={tok ? "/upload" : "/login"}>
-                            <i class="fa fa-upload fa-lg"></i>
-                            <span class="nav-text">
-                                    Upload
-                                </span>
-                        </Link>
-                    </li>
-                    <li class="has-subnav">
+                    {(role === "devop" || role === "distributing") &&
+                                <li className="has-subnav">
+                                    <Link to={tok ? "/upload" : "/login"}>
+                                        <i className="fa fa-upload fa-lg"></i>
+                                        <span className="nav-text">
+                                                Upload
+                                            </span>
+                                    </Link>
+                                </li>
+                    }
+                    <li className="has-subnav">
                         <Link to={tok ? "/chat" : "/login"}>
-                            <i class="fa fa-telegram fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-telegram fa-lg"></i>
+                            <span className="nav-text">
                                     Chats
                                 </span>
                         </Link>
                     </li>
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <Link to={tok ? "/statistic" : "/login"}>
-                            <i class="fa fa-bar-chart fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-bar-chart fa-lg"></i>
+                            <span className="nav-text">
                                     Statistics
                                 </span>
                         </Link>
 
                     </li>
-                    <li>
-                        <Link to={tok ? "/duty" : "/login"}>
-                            <i class="fa fa-check-square-o fa-lg"></i>
-                            <span class="nav-text">
-                                    Duty
-                                </span>
-                        </Link>
-                    </li>
+                    {(role === "devop" || role === "distributing") &&
+                        <li>
+                            <Link to={tok ? "/duty" : "/login"}>
+                                <i className="fa fa-check-square-o fa-lg"></i>
+                                <span className="nav-text">
+                                        Duty
+                                    </span>
+                            </Link>
+                        </li>
+                    }
                     <li>
                         <Link to="/lessons">
-                            <i class="fa fa-calendar fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-calendar fa-lg"></i>
+                            <span className="nav-text">
                                 Lessons
                                 </span>
                         </Link>
                     </li>
                     <li>
                         <Link to="#">
-                            <i class="fa fa-cogs fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-cogs fa-lg"></i>
+                            <span className="nav-text">
                                     Settings
                                 </span>
                         </Link>
                     </li>
                     <li>
                         <Link to="#">
-                            <i class="fa fa-map-marker fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-map-marker fa-lg"></i>
+                            <span className="nav-text">
                                     Member Map
                                 </span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="#">
-                            <i class="fa fa-info fa-lg"></i>
-                            <span class="nav-text">
+                        <Link to="/rabstat">
+                            <i className="fa fa-info fa-lg"></i>
+                            <span className="nav-text">
                                     Documentation
                                 </span>
                         </Link>
                     </li>
                 </ul>
 
-                <ul class="logout">
+                <ul className="logout">
                     <li>
                         <Link to="/login" onClick={(e) => {
                 e.preventDefault(); // Предотвращаем переход сразу
                 handleLogout(); // Вызываем handleLogout для выхода и перенаправления
             }}>
-                            <i class="fa fa-power-off fa-lg"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-power-off fa-lg"></i>
+                            <span className="nav-text">
                                     Logout
                                 </span>
                         </Link>

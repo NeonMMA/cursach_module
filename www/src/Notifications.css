@@ -1,0 +1,78 @@
+.notifications-container-fullscreen {
+  color: #f5f5f5;
+  padding: 20px;
+  width: 100vh;
+  height: 100vh;  /* Фон на весь экран */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+hr {
+  border: 1px solid #444;
+  margin-bottom: 20px;
+}
+
+.notification-card {
+  background-color: #999999;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.confirm-button, .decline-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.decline-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+.decline-button:hover {
+  background-color: #c82333;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.pending {
+  background-color: #6c757d;
+}
+
+.confirmed {
+  background-color: #28a745;
+}
+
+.declined {
+  background-color: #dc3545;
+}

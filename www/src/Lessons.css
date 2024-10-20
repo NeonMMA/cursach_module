@@ -1,0 +1,54 @@
+.lessons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.schedule {
+    display: flex;
+    overflow-x: auto;
+}
+
+.week-schedule {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.day-schedule {
+    margin-bottom: 10px;
+}
+
+.day-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.event {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.duty {
+    background-color: red;
+    color: white;
+}
+
+.lesson {
+    background-color: lightgreen;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+}

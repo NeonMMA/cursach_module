@@ -1,0 +1,156 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .duty-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .duty-row input[type="date"],
+  .duty-row select {
+    width: 30%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+  }
+  
+  .duty-row select {
+    cursor: pointer;
+  }
+  
+  .duty-row input[type="date"]:focus,
+  .duty-row select:focus {
+    border-color: #4CAF50;
+  }
+  
+  .duty-row button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .duty-row button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Кнопка добавления новой строки */
+  .add-button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .add-button:hover {
+    background-color: #dcdcdc;
+  }
+  
+  /* Кнопка подтверждения и отправки */
+  .confirm-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .confirm-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Стили для выбора преподавателей с красным цветом */
+  .duty-row select option {
+    color: black;
+  }
+  
+  .duty-row select option[style*="color: red"] {
+    font-weight: bold;
+    background-color: #ffe0e0;
+  }
+  
+  /* Стили для боковой панели */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100vh;
+    background-color: #2f2f2f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .sidebar i {
+    color: white;
+    margin: 20px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar i:hover {
+    color: #4CAF50;
+  }
+  
+  /* Позиционирование заголовка */
+  header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Дополнительные стили для кнопок */
+  button {
+    font-size: 14px;
+  }
+  
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 600px) {
+    .duty-row {
+      flex-direction: column;
+    }
+  
+    .duty-row input[type="date"],
+    .duty-row select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .add-button, .confirm-button {
+      width: 100%;
+    }
+  }
+  

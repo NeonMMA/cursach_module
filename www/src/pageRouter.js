@@ -8,6 +8,11 @@ import {
 import Login from "./Login";
 import Upload from './Upload';
 import Lessons from './Lessons';
+import Notifications from "./Notifications";
+import DutyForm from "./Duty";
+import Statistics from "./Stat";
+import WorkerStatisticsPage from "./rabStat";
+import {jwtDecode} from 'jwt-decode';
 
 // import AdminPage from "../pages/admin/AdminPage"
 // import UserPage from "../pages/user/UserPage"
@@ -16,14 +21,19 @@ import Lessons from './Lessons';
 // import Upload from "./Upload";
 
 import Home from "./Home";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function PageRouter(path="/") {
     const navigate = useNavigate();
+    const [role, setRole] = useState("");
+
     useEffect(() => {
         
         if (localStorage.getItem("accessToken")) {
-            console.log("done");
+            setRole(jwtDecode(localStorage.getItem("accessToken")).sub.role);
+            console.log("role: ");
+            console.log(role);
+            console.log("role-end");
             navigate(path);
         }
         else {
@@ -38,15 +48,14 @@ function PageRouter(path="/") {
             
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                {/* <Route exact path="/adminPage" element={<AdminPage />} /> */}
-                {/* <Route exact path="/userPage" element={<UserPage />} /> */}
-                {/* <Route path="/lessons" element={<Lessons />} /> */}
                 <Route path="/login" element={<Login />} />
-                {/* <Route path="/upload" element={<Upload />} /> */}
-                <Route path="/upload" element={<Upload />} />
-                {/* <ProtectedRoute path="/" element={<Home />} roles={['user', 'admin']} /> */}
+                {(role === "devop" || role === "distributing") && <Route path="/upload" element={<Upload />} />}
+                <Route path="/statistic" element={(role === "devop" || role === "distributing")?<Statistics /> : <WorkerStatisticsPage role={role}/>} />
+                
                 <Route path="/lessons" element={<Lessons />} />
-                {/* <Route path="/upload" element={<Upload />} /> */}
+                <Route path="/chat" element={<Notifications />} />
+                {(role === "devop" || role === "distributing") && <Route path="/duty" element={<DutyForm />} />}
+                <Route path="/rabstat" element={<WorkerStatisticsPage role={role}/>} />
             </Routes>
         // </Router>
     )

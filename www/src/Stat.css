@@ -1,0 +1,15 @@
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* для распределения по ширине */
+  }
+  
+  .chart-section {
+    width: 45%; /* ширина каждого графика */
+    margin-bottom: 20px; /* отступ снизу между блоками */
+  }
+  
+  .chart-section h2 {
+    text-align: center; /* выравнивание заголовков по центру */
+  }
+  
